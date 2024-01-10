@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 700;
+      color: #555;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .thank-you {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 700;
+      color: #4CAF50;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="formController">
+
+  <h1>Feedback Form</h1>
+
+  <form ng-submit="submitForm()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" ng-model="formData.name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" ng-model="formData.email" required>
+
+    <label for="performance">Performance:</label>
+    <select id="performance" ng-model="formData.performance" required>
+      <option value="">Select</option>
+      <option value="5">Excellent</option>
+      <option value="4">Good</option>
+      <option value="3">Average</option>
+      <option value="2">Below Average</option>
+      <option value="1">Poor</option>
+    </select>
+
+    <label for="features">Features:</label>
+    <select id="features" ng-model="formData.features" required>
+      <option value="">Select</option>
+      <option value="5">Excellent</option>
+      <option value="4">Good</option>
+      <option value="3">Average</option>
+      <option value="2">Below Average</option>
+      <option value="1">Poor</option>
+    </select>
+
+    <label for="design">Design:</label>
+    <select id="design" ng-model="formData.design" required>
+      <option value="">Select</option>
+      <option value="5">Excellent</option>
+      <option value="4">Good</option>
+      <option value="3">Average</option>
+      <option value="2">Below Average</option>
+      <option value="1">Poor</option>
+    </select>
+
+    <label for="comments">Additional Comments:</label>
+    <textarea id="comments" ng-model="formData.comments"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="thank-you" ng-if="showThankYou">
+    <h2>Thank you for your feedback, {{formData.name}}!</h2>
+    <p>Your feedback has been submitted successfully.</p>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+
+    app.controller('formController', function ($scope) {
+      $scope.formData = {};
+      $scope.showThankYou = false;
+
+      $scope.submitForm = function () {
+        // Here, you can handle form submission, for now, let's just show the thank you message.
+        $scope.showThankYou = true;
+      };
+    });
+  </script>
+
+</body>
+
+</html>
